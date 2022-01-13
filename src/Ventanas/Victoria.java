@@ -10,6 +10,9 @@ public class Victoria extends JFrame {
 
     private JPanel contentPane;
 
+    /*Esta es la ventana final del programa, y recibe como parámetros
+     * la información a desplegar en ella*/
+
     public Victoria(String resultado, int puntos, int partidas) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
@@ -26,10 +29,10 @@ public class Victoria extends JFrame {
         VictoriaTxt.setBounds(100, 22, 323, 90);
         contentPane.add(VictoriaTxt);
 
-        JButton xBtn = new JButton("Reiniciar juego");
-        xBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-        xBtn.setBounds(100, 227, 140, 23);
-        contentPane.add(xBtn);
+        JButton ReiniciarBtn = new JButton("Reiniciar juego");
+        ReiniciarBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+        ReiniciarBtn.setBounds(100, 227, 140, 23);
+        contentPane.add(ReiniciarBtn);
 
         JLabel ProgresoTxt = new JLabel("Tu progreso se ha guardado!");
         ProgresoTxt.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -44,7 +47,7 @@ public class Victoria extends JFrame {
         PuntosTxt.setBounds(100, 187, 200, 14);
         contentPane.add(PuntosTxt);
 
-        xBtn.addActionListener(new ActionListener() {
+        ReiniciarBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Inicio inicio = new Inicio();

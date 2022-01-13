@@ -21,6 +21,10 @@ public class Pregunta extends JFrame {
     Partida partida = new Partida();
     ManejoJugador mj = new ManejoJugador();
 
+    /*En la ventana pregunta es donde se despliegan estas con sus correspondientes respuestas.
+    * Pregunta recibe un parametro que le indica en que ronda nos ubicamos, empezando en 1 e incremendanto
+    * a medida que se avanza*/
+
     public Pregunta(int ronda){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
@@ -87,11 +91,16 @@ public class Pregunta extends JFrame {
         DaleBtn.setBounds(368, 200, 89, 36);
         contentPane.add(DaleBtn);
 
+        /*Para seleccionar la pregunta al azar se usa este método que devuelve un número
+         * aleatorio en el rango asignado*/
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
+        String pregunta = leerLinea("Preguntas"+ronda+".txt", randomNum);
+
+        /*Para mezclar las respuestas, se crea una lista de números y se la llena con los números
+         * del 2 al 5, porque esas son las posiciones de las respuestas en el archivo.*/
         List<Integer> numeros = new ArrayList<>();
         for(int i = 2; i<6; i++) numeros.add(i);
         Collections.shuffle(numeros);
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
-        String pregunta = leerLinea("Preguntas"+ronda+".txt", randomNum);
 
         String respuesta = leerParte(pregunta, 2);
         PreguntaTxt.setText(leerParte(pregunta, 1));
@@ -100,7 +109,8 @@ public class Pregunta extends JFrame {
         radioBtn3.setText(leerParte(pregunta, numeros.get(2)));
         radioBtn4.setText(leerParte(pregunta, numeros.get(3)));
 
-        
+        /*Al pulsar este botón, se define según el resultado del usuario si ganó o perdió, y como va
+        * a continuar el programa*/
         DaleBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,6 +124,8 @@ public class Pregunta extends JFrame {
                         Pregunta pregunta = new Pregunta(ronda + 1);
                         pregunta.setVisible(true);
                     }else{
+                        /*Si el jugador gana o pierde, se escribe una linea en el archivo de su historial
+                        * con todos los detalles de la partida*/
                         String nombre = leerLinea("JugadorActual.txt", 1);
                         partida.setRonda("Ronda Nro "+ronda);
                         partida.setNombreJugador(nombre);

@@ -4,6 +4,10 @@ import java.io.*;
 
 public class ManejoDatos {
 
+    /*Aqui hay metodos generales para el manejo de datos en los archivos del programa.
+    * Todos estos metodos son Static, para poder hacer import static de la clase y asi
+    * prescindir de instanciar un objeto para usarlos*/
+
     public static void crear(String nombreArchivo){
         File archivo = new File(nombreArchivo);
         try {
@@ -13,6 +17,7 @@ public class ManejoDatos {
             e.printStackTrace(System.out);
         }
     }
+
     public static boolean existe(String nombreArchivo) {
         File archivo = new File(nombreArchivo);
         return archivo.exists();
@@ -77,7 +82,10 @@ public class ManejoDatos {
             return 0;
         }
     }
-
+        /*El método leerParte recibe como parámetro una línea de texto y un índice.
+         * En base a unos separadores que hay en los archivos de texto, que en este caso
+         * son "xx", el método separa la línea en partes y devuelve la correspondiente
+         * al índice solicitado*/
     public static String leerParte(String s, int index) {
         String[] detalles = s.split("xx");
         return detalles[index-1];

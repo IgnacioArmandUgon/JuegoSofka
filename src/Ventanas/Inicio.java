@@ -15,6 +15,8 @@ public class Inicio extends JFrame {
     private JTextField RegistroTxt;
     private JTextField IngresoTxt;
 
+    /*Ventana principal del programa con sus correspondientes elementos y actionListeners*/
+
     public Inicio(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
@@ -56,19 +58,22 @@ public class Inicio extends JFrame {
         IngresarBtn.setBounds(222, 168, 126, 32);
         contentPane.add(IngresarBtn);
 
+        /*Al presionar "Registrar", se lee lo ingresado en el campo de texto y
+         * se usa esa información para registrar a un nuevo jugador si es que aun no existe*/
         ManejoJugador mj = new ManejoJugador();
         RegistrarBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    mj.Registrar(new Jugador(RegistroTxt.getText()));
+                    mj.Registrar(RegistroTxt.getText());
                 } catch (SobrescrituraExcepcion ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
                 RegistroTxt.setText("");
             }
         });
-
+        /*Al presionar "Ingresar", se lee lo ingresado en el campo de texto y
+         * se usa esa información para definir al jugador actual, si es que existe*/
         IngresarBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -6,6 +6,7 @@ public class Partida {
     private int puntos;
     private String ronda;
 
+    /*La clase partida se usa para guardar momentaneamente los datos de la partida en progreso.*/
     public Partida(){
     }
 

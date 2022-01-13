@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 public class Bienvenida extends JFrame {
     private JPanel contentPane;
 
+    /*Ventana para dar la bienvenida al usuario con un mensaje personalizado*/
+
     public Bienvenida(String s) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
