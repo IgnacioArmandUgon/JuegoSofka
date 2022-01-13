@@ -19,12 +19,11 @@ public class Inicio extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
         contentPane = new JPanel();
-        contentPane.setBackground(SystemColor.textHighlight);
+        contentPane.setBackground(new Color(0,120,215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
         this.setResizable(false);
-        this.setUndecorated(true);
 
         JLabel Campo = new JLabel("Bienvenido al juego");
         Campo.setForeground(SystemColor.text);
@@ -41,11 +40,6 @@ public class Inicio extends JFrame {
         IngresoTxt.setBounds(52, 168, 154, 32);
         contentPane.add(IngresoTxt);
         IngresoTxt.setColumns(10);
-
-        JButton xBtn = new JButton("X");
-        xBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-        xBtn.setBounds(435, 11, 45, 23);
-        contentPane.add(xBtn);
 
         JLabel WarningTxt = new JLabel("Registrate para que tu progreso quede guardado!");
         WarningTxt.setFont(new Font("Yu Gothic", Font.BOLD, 14));
@@ -88,12 +82,6 @@ public class Inicio extends JFrame {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
                 IngresoTxt.setText("");
-            }
-        });
-        xBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Inicio.this.dispose();
             }
         });
 

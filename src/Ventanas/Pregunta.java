@@ -25,12 +25,11 @@ public class Pregunta extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200,200,500,300);
         contentPane = new JPanel();
-        contentPane.setBackground(SystemColor.textHighlight);
+        contentPane.setBackground(new Color(0,120,215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
         this.setResizable(false);
-        this.setUndecorated(true);
 
         JTextArea PreguntaTxt = new JTextArea();
         PreguntaTxt.setForeground(SystemColor.text);
@@ -43,38 +42,33 @@ public class Pregunta extends JFrame {
         PreguntaTxt.setLineWrap(true);
         PreguntaTxt.setEditable(false);
 
-        JButton xBtn = new JButton("X");
-        xBtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-        xBtn.setBounds(435, 11, 45, 23);
-        contentPane.add(xBtn);
-
         radioBtn1 = new JRadioButton("");
         radioBtn1.setSelected(true);
         radioBtn1.setForeground(SystemColor.text);
         radioBtn1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         radioBtn1.setBackground(SystemColor.textHighlight);
-        radioBtn1.setBounds(21, 167, 161, 36);
+        radioBtn1.setBounds(21, 141, 161, 36);
         contentPane.add(radioBtn1);
 
         radioBtn2 = new JRadioButton("");
         radioBtn2.setForeground(SystemColor.text);
         radioBtn2.setFont(new Font("Tahoma", Font.PLAIN, 12));
         radioBtn2.setBackground(SystemColor.textHighlight);
-        radioBtn2.setBounds(194, 167, 148, 36);
+        radioBtn2.setBounds(194, 141, 148, 36);
         contentPane.add(radioBtn2);
 
         radioBtn3 = new JRadioButton("");
         radioBtn3.setForeground(SystemColor.text);
         radioBtn3.setFont(new Font("Tahoma", Font.PLAIN, 12));
         radioBtn3.setBackground(SystemColor.textHighlight);
-        radioBtn3.setBounds(21, 226, 161, 36);
+        radioBtn3.setBounds(21, 200, 161, 36);
         contentPane.add(radioBtn3);
 
         radioBtn4 = new JRadioButton("");
         radioBtn4.setForeground(SystemColor.text);
         radioBtn4.setFont(new Font("Tahoma", Font.PLAIN, 12));
         radioBtn4.setBackground(SystemColor.textHighlight);
-        radioBtn4.setBounds(194, 226, 148, 36);
+        radioBtn4.setBounds(194, 200, 148, 36);
         contentPane.add(radioBtn4);
 
         ButtonGroup grupo = new ButtonGroup();
@@ -90,7 +84,7 @@ public class Pregunta extends JFrame {
 
         JButton DaleBtn = new JButton("Dale!");
         DaleBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
-        DaleBtn.setBounds(368, 226, 89, 36);
+        DaleBtn.setBounds(368, 200, 89, 36);
         contentPane.add(DaleBtn);
 
         List<Integer> numeros = new ArrayList<>();
@@ -112,8 +106,10 @@ public class Pregunta extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if(botonPulsado().getText().equalsIgnoreCase(respuesta)) {
                     if(ronda<5) {
+                        String nombre = leerLinea("JugadorActual.txt", 1);
                         partida.setRonda("Ronda Nro "+ronda);
                         partida.setPuntos(ronda*100);
+
                         Pregunta.this.dispose();
                         Pregunta pregunta = new Pregunta(ronda + 1);
                         pregunta.setVisible(true);
@@ -122,12 +118,13 @@ public class Pregunta extends JFrame {
                         partida.setRonda("Ronda Nro "+ronda);
                         partida.setNombreJugador(nombre);
                         partida.setResultado("Ganada");
-                        partida.setPuntos(ronda*100);
-
-                        Victoria v = new Victoria("!Has ganado!",partida.getPuntos(), contarLineas("Historial"+nombre+".txt"));
-                        v.setVisible(true);
+                        partida.setPuntos(ronda*100 );
 
                         escribir(partida.toString(),"Historial"+nombre+".txt",  true);
+
+                        Pregunta.this.dispose();
+                        Victoria v = new Victoria("!Has ganado!", + mj.contarPuntos(nombre), mj.contarGanadas(nombre));
+                        v.setVisible(true);
                     }
 
                 }else{
@@ -136,17 +133,15 @@ public class Pregunta extends JFrame {
                     partida.setNombreJugador(nombre);
                     partida.setResultado("Perdida");
                     partida.setPuntos((ronda*100)-100);
-                    Victoria v = new Victoria("Has perdido...", partida.getPuntos(), contarLineas("Historial"+leerLinea("JugadorActual.txt", 1)+".txt"));
-                    v.setVisible(true);
 
                     escribir(partida.toString(),"Historial"+nombre+".txt",true);
+
+                    Pregunta.this.dispose();
+                    Victoria v = new Victoria("Has perdido...",mj.contarPuntos(nombre), mj.contarGanadas(nombre));
+                    v.setVisible(true);
+
+
                 }
-            }
-        });
-        xBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Pregunta.this.dispose();
             }
         });
     }

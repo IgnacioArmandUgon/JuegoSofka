@@ -23,5 +23,24 @@ public class ManejoJugador {
         }
     }
 
+    public static int contarPuntos(String nombreJugador){
+     int lineas = contarLineas("Historial"+nombreJugador+".txt");
+     int puntos = 0;
+     for(int i = 1; i<=lineas; i++){
+         puntos = puntos + Integer.parseInt(leerParte(leerLinea("Historial"+nombreJugador+".txt", i), 3));
+     }
+     return puntos;
+     }
+    public static int contarGanadas(String nombreJugador){
+        int lineas = contarLineas("Historial"+nombreJugador+".txt");
+        int ganadas = 0;
+        for(int i = 1; i<=lineas; i++){
+            if((leerParte(leerLinea("Historial"+nombreJugador+".txt", i), 2).equalsIgnoreCase("Ganada"))){
+                ganadas++;
+            }
+        }
+        return ganadas;
+    }
+
 
 }
