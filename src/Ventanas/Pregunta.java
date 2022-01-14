@@ -123,9 +123,9 @@ public class Pregunta extends JFrame {
                         partida.setRonda("Ronda Nro " + ronda);
                         partida.setPuntos(ronda * 100);
 
-                        Pregunta.this.dispose();
                         Pregunta pregunta = new Pregunta(ronda + 1);
                         pregunta.setVisible(true);
+                        Pregunta.this.dispose();
                     } else {
                         /*Si el jugador gana o pierde, se escribe una linea en el archivo de su historial
                          * con todos los detalles de la partida*/
@@ -137,9 +137,9 @@ public class Pregunta extends JFrame {
 
                         escribir(partida.toString(), "Historial" + nombre + ".txt", true);
 
-                        Pregunta.this.dispose();
                         Victoria v = new Victoria("!Has ganado!", +mj.contarPuntos(nombre), mj.contarGanadas(nombre));
                         v.setVisible(true);
+                        Pregunta.this.dispose();
                     }
 
                 } else {
@@ -151,11 +151,9 @@ public class Pregunta extends JFrame {
 
                     escribir(partida.toString(), "Historial" + nombre + ".txt", true);
 
-                    Pregunta.this.dispose();
                     Victoria v = new Victoria("Has perdido...", mj.contarPuntos(nombre), mj.contarGanadas(nombre));
                     v.setVisible(true);
-
-
+                    Pregunta.this.dispose();
                 }
             }
         });

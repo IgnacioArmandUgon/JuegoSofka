@@ -81,9 +81,9 @@ public class Inicio extends JFrame {
                 try {
                     String nombre = IngresoTxt.getText();
                     mj.Ingresar(nombre);
-                    Inicio.this.dispose();
                     JFrame wlcm = new Bienvenida("Bienvenido al juego " + nombre + "!");
                     wlcm.setVisible(true);
+                    Inicio.this.dispose();
                 } catch (CuentaNulaExcepcion ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }

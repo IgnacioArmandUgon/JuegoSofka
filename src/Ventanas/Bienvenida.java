@@ -36,9 +36,9 @@ public class Bienvenida extends JFrame {
         JugarBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Bienvenida.this.dispose();
                 JFrame pregunta = new Pregunta(1);
                 pregunta.setVisible(true);
+                Bienvenida.this.dispose();
             }
         });
     }
