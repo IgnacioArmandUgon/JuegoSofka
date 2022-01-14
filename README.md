@@ -9,4 +9,4 @@ Como metodo de persistencia de datos se usan archivos de texto. Los archivos de 
 se guardan en la carpeta local del projecto.
 
 ####Como ejecutar programa ####
-pendiente
+Para iniciar el progarma debe ejecutar archivo SofkaJuego.jar. Importante ejecutarlo dentro de la carpeta fuente. 
