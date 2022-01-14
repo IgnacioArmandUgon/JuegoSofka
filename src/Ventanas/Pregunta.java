@@ -85,7 +85,7 @@ public class Pregunta extends JFrame {
         grupo.add(radioBtn4);
 
         JLabel PuntuacionTxt = new JLabel("");
-        PuntuacionTxt.setFont(new Font("Tahoma", Font.BOLD, 12));
+        PuntuacionTxt.setFont(new Font("Tahoma", Font.BOLD, 11));
         PuntuacionTxt.setBounds(368, 167, 103, 36);
         contentPane.add(PuntuacionTxt);
 
@@ -93,6 +93,11 @@ public class Pregunta extends JFrame {
         DaleBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
         DaleBtn.setBounds(368, 200, 89, 36);
         contentPane.add(DaleBtn);
+
+        JButton RetirarseBtn = new JButton("Abandonar");
+        RetirarseBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+        RetirarseBtn.setBounds(368, 160, 89, 36);
+        contentPane.add(RetirarseBtn);
 
         /*Para seleccionar la pregunta al azar se usa este método que devuelve un número
          * aleatorio en el rango asignado*/
@@ -155,6 +160,38 @@ public class Pregunta extends JFrame {
                     v.setVisible(true);
                     Pregunta.this.dispose();
                 }
+            }
+        });
+
+        /*Botón con un comportamiento similar al anterior, salvo que este cierra el programa y guarda
+        * el proceso como una partida de tipo "abandonada"*/
+        RetirarseBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (botonPulsado().getText().equalsIgnoreCase(respuesta)) {
+
+                    String nombre = leerLinea("JugadorActual.txt", 1);
+                    partida.setRonda("Ronda Nro " + ronda);
+                    partida.setNombreJugador(nombre);
+                    partida.setResultado("Abandonada");
+                    partida.setPuntos(ronda * 100);
+
+                    escribir(partida.toString(), "Historial" + nombre + ".txt", true);
+
+                    Pregunta.this.dispose();
+
+                } else {
+                    String nombre = leerLinea("JugadorActual.txt", 1);
+                    partida.setRonda("Ronda Nro " + ronda);
+                    partida.setNombreJugador(nombre);
+                    partida.setResultado("Abandonada");
+                    partida.setPuntos((ronda * 100) - 100);
+
+                    escribir(partida.toString(), "Historial" + nombre + ".txt", true);
+
+                    Pregunta.this.dispose();
+                }
+
             }
         });
     }
