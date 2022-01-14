@@ -3,7 +3,6 @@ package Ventanas;
 import ManejoJugador.SobrescrituraExcepcion;
 import ManejoJugador.CuentaNulaExcepcion;
 import ManejoJugador.ManejoJugador;
-import domain.Jugador;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -19,12 +18,13 @@ public class Inicio extends JFrame {
 
     public Inicio(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200,200,500,300);
+        setSize(500,300);
         contentPane = new JPanel();
         contentPane.setBackground(new Color(0,120,215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        setLocationRelativeTo(null);
         this.setResizable(false);
 
         JLabel Campo = new JLabel("Bienvenido al juego");

@@ -1,9 +1,12 @@
 package ManejoDatos;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ManejoDatos {
-
     /*Aqui hay metodos generales para el manejo de datos en los archivos del programa.
     * Todos estos metodos son Static, para poder hacer import static de la clase y asi
     * prescindir de instanciar un objeto para usarlos*/
@@ -85,10 +88,12 @@ public class ManejoDatos {
         /*El método leerParte recibe como parámetro una línea de texto y un índice.
          * En base a unos separadores que hay en los archivos de texto, que en este caso
          * son "xx", el método separa la línea en partes y devuelve la correspondiente
-         * al índice solicitado*/
+         * al índice solicitado.
+         * Ademas, convierte el texto el estandar ISO a el UTF-8 para poder
+         *  ver tildes y demas caracteres especiales*/
     public static String leerParte(String s, int index) {
         String[] detalles = s.split("xx");
-        return detalles[index-1];
+        return s = new String(detalles[index-1].getBytes(Charset.forName("ISO-8859-1")), Charset.forName("UTF-8"));
     }
 
     public static String leerLinea(String nombreArchivo, int index){

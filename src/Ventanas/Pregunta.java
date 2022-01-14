@@ -27,8 +27,9 @@ public class Pregunta extends JFrame {
 
     public Pregunta(int ronda){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200,200,500,300);
+        setSize(500,300);
         contentPane = new JPanel();
+        setLocationRelativeTo(null);
         contentPane.setBackground(new Color(0,120,215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);

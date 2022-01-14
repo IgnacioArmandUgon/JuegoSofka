@@ -1,7 +1,6 @@
 package ManejoJugador;
 
 import static ManejoDatos.ManejoDatos.*;
-import domain.Jugador;
 
 public class ManejoJugador {
 
