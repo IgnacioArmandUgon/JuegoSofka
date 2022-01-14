@@ -1,6 +1,7 @@
 package test;
 
 import Ventanas.*;
+
 import javax.swing.*;
 
 public class test {

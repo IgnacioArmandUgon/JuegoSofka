@@ -7,14 +7,14 @@ public class Partida {
     private String ronda;
 
     /*La clase partida se usa para guardar momentaneamente los datos de la partida en progreso.*/
-    public Partida(){
+    public Partida() {
     }
 
-    public Partida(String nombre){
+    public Partida(String nombre) {
         this.nombreJugador = nombre;
     }
 
-    public void setPuntos(int puntos){
+    public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
 
@@ -48,6 +48,6 @@ public class Partida {
 
     @Override
     public String toString() {
-        return nombreJugador+"xx"+resultado+"xx"+puntos+"xx"+ronda;
+        return nombreJugador + "xx" + resultado + "xx" + puntos + "xx" + ronda;
     }
 }

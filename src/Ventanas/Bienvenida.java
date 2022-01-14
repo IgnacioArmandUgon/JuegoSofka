@@ -13,9 +13,9 @@ public class Bienvenida extends JFrame {
 
     public Bienvenida(String s) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,300);
+        setSize(500, 300);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(0,120,215));
+        contentPane.setBackground(new Color(0, 120, 215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         setLocationRelativeTo(null);
@@ -23,7 +23,7 @@ public class Bienvenida extends JFrame {
         this.setResizable(false);
 
         JLabel Campo = new JLabel(s);
-        Campo.setForeground(SystemColor.text);
+        Campo.setForeground(Color.white);
         Campo.setFont(new Font("Verdana", Font.BOLD, 24));
         Campo.setBounds(38, 39, 422, 99);
         contentPane.add(Campo);

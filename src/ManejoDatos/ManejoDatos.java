@@ -8,10 +8,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ManejoDatos {
     /*Aqui hay metodos generales para el manejo de datos en los archivos del programa.
-    * Todos estos metodos son Static, para poder hacer import static de la clase y asi
-    * prescindir de instanciar un objeto para usarlos*/
+     * Todos estos metodos son Static, para poder hacer import static de la clase y asi
+     * prescindir de instanciar un objeto para usarlos*/
 
-    public static void crear(String nombreArchivo){
+    public static void crear(String nombreArchivo) {
         File archivo = new File(nombreArchivo);
         try {
             PrintWriter salida = new PrintWriter(archivo);
@@ -32,7 +32,7 @@ public class ManejoDatos {
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, anexar));
             if (!s.equalsIgnoreCase("")) {
                 salida.println(s);
-            }else{
+            } else {
                 System.out.println("Nombre invalido, intente de nuevo");
             }
             salida.close();
@@ -43,27 +43,28 @@ public class ManejoDatos {
         }
 
     }
+
     public static boolean buscar(String nombreArchivo, String buscar) {
         File archivo = new File(nombreArchivo);
         boolean existe = false;
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(archivo));
             String linea = entrada.readLine();
-            while(linea != null) {
-                if(buscar.equalsIgnoreCase(linea)){
+            while (linea != null) {
+                if (buscar.equalsIgnoreCase(linea)) {
                     existe = true;
                     break;
                 }
                 linea = entrada.readLine();
             }
             entrada.close();
-        } catch (IOException e)  {
+        } catch (IOException e) {
             e.printStackTrace(System.out);
         }
         return existe;
     }
 
-    public static int contarLineas(String nombreArchivo){
+    public static int contarLineas(String nombreArchivo) {
         File archivo = new File(nombreArchivo);
         BufferedReader entrada = null;
         try {
@@ -71,7 +72,7 @@ public class ManejoDatos {
             int lineas = 0;
             try {
                 String linea = entrada.readLine();
-                while(linea != null){
+                while (linea != null) {
                     linea = entrada.readLine();
                     lineas++;
                 }
@@ -85,28 +86,29 @@ public class ManejoDatos {
             return 0;
         }
     }
-        /*El método leerParte recibe como parámetro una línea de texto y un índice.
-         * En base a unos separadores que hay en los archivos de texto, que en este caso
-         * son "xx", el método separa la línea en partes y devuelve la correspondiente
-         * al índice solicitado.
-         * Ademas, convierte el texto el estandar ISO a el UTF-8 para poder
-         *  ver tildes y demas caracteres especiales*/
+
+    /*El método leerParte recibe como parámetro una línea de texto y un índice.
+     * En base a unos separadores que hay en los archivos de texto, que en este caso
+     * son "xx", el método separa la línea en partes y devuelve la correspondiente
+     * al índice solicitado.
+     * Ademas, convierte el texto el estandar ISO a el UTF-8 para poder
+     *  ver tildes y demas caracteres especiales*/
     public static String leerParte(String s, int index) {
         String[] detalles = s.split("xx");
-        return s = new String(detalles[index-1].getBytes(Charset.forName("ISO-8859-1")), Charset.forName("UTF-8"));
+        return s = new String(detalles[index - 1].getBytes(Charset.forName("ISO-8859-1")), Charset.forName("UTF-8"));
     }
 
-    public static String leerLinea(String nombreArchivo, int index){
+    public static String leerLinea(String nombreArchivo, int index) {
         File archivo = new File(nombreArchivo);
         BufferedReader entrada = null;
         String linea = null;
-        try{
+        try {
             entrada = new BufferedReader(new FileReader(archivo));
-            for(int i = 1; i<=index; i++){
+            for (int i = 1; i <= index; i++) {
                 linea = entrada.readLine();
             }
             return linea;
-    } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace(System.out);
             return "";
         } catch (IOException e) {

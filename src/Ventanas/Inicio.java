@@ -3,6 +3,7 @@ package Ventanas;
 import ManejoJugador.SobrescrituraExcepcion;
 import ManejoJugador.CuentaNulaExcepcion;
 import ManejoJugador.ManejoJugador;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -16,11 +17,11 @@ public class Inicio extends JFrame {
 
     /*Ventana principal del programa con sus correspondientes elementos y actionListeners*/
 
-    public Inicio(){
+    public Inicio() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,300);
+        setSize(500, 300);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(0,120,215));
+        contentPane.setBackground(new Color(0, 120, 215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -28,7 +29,7 @@ public class Inicio extends JFrame {
         this.setResizable(false);
 
         JLabel Campo = new JLabel("Bienvenido al juego");
-        Campo.setForeground(SystemColor.text);
+        Campo.setForeground(Color.white);
         Campo.setFont(new Font("Verdana", Font.BOLD, 24));
         Campo.setBounds(76, 33, 295, 32);
         contentPane.add(Campo);
@@ -81,7 +82,7 @@ public class Inicio extends JFrame {
                     String nombre = IngresoTxt.getText();
                     mj.Ingresar(nombre);
                     Inicio.this.dispose();
-                    JFrame wlcm = new Bienvenida("Bienvenido al juego " + nombre+"!");
+                    JFrame wlcm = new Bienvenida("Bienvenido al juego " + nombre + "!");
                     wlcm.setVisible(true);
                 } catch (CuentaNulaExcepcion ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());

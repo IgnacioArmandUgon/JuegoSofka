@@ -15,9 +15,9 @@ public class Victoria extends JFrame {
 
     public Victoria(String resultado, int puntos, int partidas) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,300);
+        setSize(500, 300);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(0,120,215));
+        contentPane.setBackground(new Color(0, 120, 215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setLocationRelativeTo(null);
         setContentPane(contentPane);
@@ -40,11 +40,11 @@ public class Victoria extends JFrame {
         ProgresoTxt.setBounds(100, 123, 227, 28);
         contentPane.add(ProgresoTxt);
 
-        JLabel PartidasTxt = new JLabel("Partidas ganadas hasta ahora: "+partidas);
+        JLabel PartidasTxt = new JLabel("Partidas ganadas hasta ahora: " + partidas);
         PartidasTxt.setBounds(100, 162, 200, 14);
         contentPane.add(PartidasTxt);
 
-        JLabel PuntosTxt = new JLabel("Total de puntos: "+puntos);
+        JLabel PuntosTxt = new JLabel("Total de puntos: " + puntos);
         PuntosTxt.setBounds(100, 187, 200, 14);
         contentPane.add(PuntosTxt);
 

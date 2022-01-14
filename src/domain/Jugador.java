@@ -7,7 +7,8 @@ public class Jugador {
     private int premio;
     private List<Partida> Historial;
 
-    public Jugador(){}
+    public Jugador() {
+    }
 
     public Jugador(String nombre) {
         this.nombre = nombre;
