@@ -12,7 +12,8 @@ public class ManejoDatos {
      * prescindir de instanciar un objeto para usarlos*/
 
     public static void crear(String nombreArchivo) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         try {
             PrintWriter salida = new PrintWriter(archivo);
             salida.close();
@@ -22,12 +23,14 @@ public class ManejoDatos {
     }
 
     public static boolean existe(String nombreArchivo) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         return archivo.exists();
     }
 
     public static void escribir(String s, String nombreArchivo, boolean anexar) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         try {
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, anexar));
             if (!s.equalsIgnoreCase("")) {
@@ -45,7 +48,8 @@ public class ManejoDatos {
     }
 
     public static boolean buscar(String nombreArchivo, String buscar) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         boolean existe = false;
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(archivo));
@@ -65,7 +69,8 @@ public class ManejoDatos {
     }
 
     public static int contarLineas(String nombreArchivo) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         BufferedReader entrada = null;
         try {
             entrada = new BufferedReader(new FileReader(archivo));
@@ -99,7 +104,8 @@ public class ManejoDatos {
     }
 
     public static String leerLinea(String nombreArchivo, int index) {
-        File archivo = new File(nombreArchivo);
+        String ruta = "data/"+nombreArchivo;
+        File archivo = new File(ruta);
         BufferedReader entrada = null;
         String linea = null;
         try {
